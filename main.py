@@ -12,7 +12,7 @@ class BikeRental:
         """
         Displays bikes currently available for hire
         """
-        print(f"We have currently {self.stock} bikes available for hire")
+        print("We have currently {} bikes available for hire".format(self.stock))
 
     def rentBikeOnHourlyBasis(self, n):
         """
@@ -26,12 +26,12 @@ class BikeRental:
             return None
         # do not rent a bike if stock is less than requested bikes
         elif n > self.stock:
-            print(f"Sorry! We have currently {self.stock} bikes available to rent!")
+            print("Sorry! We have currently {self.stock} bikes available to rent!".format(self.stock))
             return None
         # Now we can rent bikes
         else:
             now = datetime.datetime.now()
-            print(f"You have rented {n} bike/s on an hourly basistoday at {now.hour} hours")
+            print("You have rented {} bike(s) on weekly basis today at {} hours.".format(n, now.hour))
             print("You will be charge $5 per hour per bike.")
             print("We hope you enjoy our service")
 
@@ -50,11 +50,11 @@ class BikeRental:
                 print("Number of bikes must be greater than 0")
                 return None
             elif n > self.stock:
-                print(f"Sorry! We currently have {self.stock} bikes awailable to rent")
+                print("Sorry! We currently have {} bikes awailable to rent".format(self.stock))
                 return None
             else:
                 now = datetime.datetime.now()
-                print(f"You have rented {n} bike/s on a daily basis today at {now.hour}")
+                print("You have rented {} bike/s on a daily basis today at {}".format(n, now.hour))
                 print("You will be charged $20 for each day per bike")
                 print("We hope that you enjoy our service.")
 
@@ -72,11 +72,11 @@ class BikeRental:
                 print("Number of bikes must be greater than 0")
                 return None
             elif n > self.stock:
-                print(f"Sorry! We currently have {self.stock} bikes awailable to rent")
+                print("Sorry! We currently have {} bikes awailable to rent".format(self.stock))
                 return None
             else:
                 now = datetime.datetime.now()
-                print(f"You have rented {n} bike/s on a weekly basis today at {now.hour}")
+                print("You have rented {} bike/s on a weekly basis today at {}".format(n, now.hour))
                 print("You will be charged $60 for each week per bike")
                 print("We hope that you enjoy our service.")
 
@@ -118,7 +118,7 @@ class BikeRental:
                     bill = bill * 0.7
 
                 print("Thanks for returning your bike. I hope you enjoyed your ride ;)")
-                print(f"That will be ${bill}")
+                print("That will be ${}".format(bill))
                 return bill
             else:
                 print("Are you sure you rented a bike with us pal?")
