@@ -12,7 +12,7 @@ class BikeRental:
         """
         Displays bikes currently available for hire
         """
-        print(f"We have currently {self.stock} bikes available for hire.")
+        print(f"We have currently {self.stock} bikes available for hire")
 
     def rentBikeOnHourlyBasis(self, n):
         """
@@ -98,4 +98,67 @@ class BikeRental:
 
             # issue a bill only if all three params are not null
             if rentalTime and rentalBasis and numOfBikes:
-                self.stock += 
+                self.stock += numOfBikes
+                now = datetime.datetime.now()
+                rentalPeriod = now - rentalTime
+            
+                # hourly bill calculation
+                if rentalBasis == 1:
+                    bill = round(rentalPeriod.seconds / 3600) * 5 * numOfBikes
+
+                # daily bill calculation
+                elif rentalBasis == 2:
+                    bill = round(rentalPeriod.days) * 20 * numOfBikes
+                # Weekly calculation
+                elif rentalBasis == 3:
+                    bill = round(rentalPeriod.days) * 20 * numOfBikes
+                # family discount calculation
+                if (3 <= numOfBikes <=5):
+                    print("You are eligible for a family discount of 30%")
+                    bill = bill * 0.7
+
+                print("Thanks for returning your bike. I hope you enjoyed your ride ;)")
+                print(f"That will be ${bill}")
+                return bill
+            else:
+                print("Are you sure you rented a bike with us pal?")
+                return None
+
+
+class Customer:
+    def __init__(self):
+        """
+        constructor method to instantiate various customer objects
+        """
+        self.bikes = 0
+        self.rentalBasis = 0
+        self.rentalTime = 0
+        self.bill = 0
+
+    def requestBike(self):
+        """
+        Takes a request from customer for amount of bikess
+        """
+        bikes = input("How many sir?")
+
+        # Logic for invalid input
+        try:
+            bikes = int(bikes)
+        except ValueError as e:
+            print("Thats not a valid input please add a number greater than zero.")
+            return -1
+        
+        if bikes < 1:
+            print("Invalid input. Number of bikes must be greater than zero.")
+            return -1
+        else:
+            self.bikes = bikes
+    
+    def returnBike(self):
+        """
+        Allows customers to return their bikes to the renatl shop.
+        """
+        if self.rentalBasis and self.rentalTime and self.bikes:
+            return self.rentalTime, self.rentalBasis, self.bikes
+        else:
+            return 0, 0, 0        
