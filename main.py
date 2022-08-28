@@ -116,7 +116,7 @@ class BikeRental:
             # family discount calculation
             if (3 <= numOfBikes <=5):
                 print("You are eligible for a family discount of 30%")
-                bill = bill * 0.7
+            bill = bill * 0.7
 
             print("Thanks for returning your bike. I hope you enjoyed your ride ;)")
             print("That will be ${}".format(bill))
